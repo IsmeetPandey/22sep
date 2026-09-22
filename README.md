@@ -43,16 +43,18 @@ Exit status is `0` when no material drift is found and `1` when drift is detecte
 
 ## Why this exists
 
-Agent context is becoming a first-class engineering concern. Recent research has found widespread smells in `AGENTS.md` files, including context bloat and conflicting instructions, while other studies show that repository context can change agent behavior and cost. Workspace-level evaluation is also emerging because agents still struggle with large, heterogeneous file dependencies. citeturn1academia26turn1academia27turn1academia28
+Agent context is becoming a first-class engineering concern. Recent research has found widespread smells in `AGENTS.md` files, including context bloat and conflicting instructions, while other studies show that repository context can change agent behavior and cost. Workspace-level evaluation is also emerging because agents still struggle with large, heterogeneous file dependencies.
 
-Existing systems focus on generating/syncing agent instruction files, persistent memory, or evaluating agents. ContextFossil takes a different, deliberately small approach: **observe the ambient workspace conditions without storing the sensitive content itself**. citeturn1search6turn0search1
+Sources: [Configuration Smells in AGENTS.md](https://arxiv.org/abs/2606.15828), [Evaluating AGENTS.md](https://arxiv.org/abs/2602.11988), [Workspace-Bench](https://arxiv.org/abs/2605.03596).
+
+Existing systems focus on generating/syncing agent instruction files, persistent memory, or evaluating agents. ContextFossil takes a different, deliberately small approach: **observe the ambient workspace conditions without storing the sensitive content itself**.
 
 ## Security boundary
 
 ContextFossil is designed for untrusted workspaces:
 
 - never records environment-variable values
-- never reads instruction-file contents
+- never reads instruction-file contents into the snapshot
 - never executes repository code
 - never follows URLs
 - never makes network requests
